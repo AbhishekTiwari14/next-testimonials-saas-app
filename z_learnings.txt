@@ -1,0 +1,13 @@
+(1) create mongoose user model with userSchema & messageSchema
+(2) create zod validation schemas
+(3) connect to mongoDB
+(4) write signup route
+(5) write signin route
+(6) test signup & signin routes using postman
+(7) write getjwtdata function to retrieve jwt user data stored in cookie 
+(8) write me route
+
+...........................................
+FRONTEND 
+
+(1) Create signup & signin page
