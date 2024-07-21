@@ -4,7 +4,7 @@ export interface Testimonial extends mongoose.Document{
     name: string;
     message: string;
     image: string; //cloudinary
-    userId: string;
+    //userId: string;
     createdAt: Date
 }
 

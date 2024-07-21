@@ -5,8 +5,9 @@
 (5) write signin route
 (6) test signup & signin routes using postman
 (7) write getjwtdata function to retrieve jwt user data stored in cookie 
-(8) write me route
-
+(8) write write-testimonial route to handle new testimonial submisiion
+(9) write me route
+(10) 
 ...........................................
 FRONTEND 
 
