@@ -6,6 +6,15 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+
 
 export default function SelectedTestimonials({ params }: { params: { userId: string } }) {
 
@@ -57,8 +66,25 @@ export default function SelectedTestimonials({ params }: { params: { userId: str
   }, [username])
 
   return (
+    <>
+    <Breadcrumb className='mt-8 ml-8'>
+        <BreadcrumbList className='text-gray-300'>
+          <BreadcrumbItem>
+            <BreadcrumbLink className='hover:text-green-400'>Dashboard</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink className='hover:text-green-400'>Profile</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem className='text-white '>
+            <BreadcrumbLink className='hover:text-green-400'>Selected Testimonials</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
     <section className="text-white body-font">
       <div className="container py-8">
+      <h2 className='text-2xl font-bold mb-6'>Selected Testimonials</h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
           {testimonials && testimonials.map((testimonial: Testimonial)=> (
             <div key ={String(testimonial._id)} className= "rounded-lg shadow-md p-4 bg-[#2A323C]">
@@ -86,5 +112,6 @@ export default function SelectedTestimonials({ params }: { params: { userId: str
         </div>
       </div>
     </section>
+    </>
   )
 }

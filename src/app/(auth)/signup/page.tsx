@@ -20,6 +20,7 @@ import axios, { AxiosError } from "axios"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react';
+import Link from 'next/link'
 
 
 const SignupPage = () => {
@@ -77,7 +78,7 @@ const SignupPage = () => {
                 description: response.data.message,
             });
             
-            router.replace(`/me`);
+            router.replace(`/dashboard`);
             setIsSubmitting(false);
         } catch (error) {
             console.error('Error during sign-up:', error);
@@ -120,7 +121,7 @@ const SignupPage = () => {
                     }}
                   />
                   {isCheckingUsername && <Loader2 className="animate-spin" />}
-                  {!isCheckingUsername && usernameMessage && (
+                  {!isCheckingUsername && usernameMessage && username && (
                     <p
                       className={`text-sm ${
                         usernameMessage === 'Username is unique'
@@ -170,6 +171,7 @@ const SignupPage = () => {
               ) : (
                 'Sign Up'
               )}</Button>
+        <p className='text-gray-400 text-sm'>Already have an account? <Link href='/signin' className='text-blue-500 hover:underline'>Log In</Link></p>
       </form>
     </Form>
     </div>

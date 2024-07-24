@@ -7,9 +7,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react'
 
-export default function DashboardPage({ params }: { params: { userId: string } }) {
-
-  const { userId } = params;
+export default function DashboardPage() {
   const router = useRouter();
   const [cookieUserId, setCookieUserId] = useState<string>('');
   const [username, setUsername] = useState('');
@@ -24,15 +22,14 @@ export default function DashboardPage({ params }: { params: { userId: string } }
         setUsername(response.data.data.username);
         setCookieUserId(response.data.data._id.toString()); 
       } catch (err: any) {
-        console.log(err);
+
+        console.log("user unauthorized", err);
       }
     }
     authorizeUser();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
-  console.log("username", username);
-
   const fetchTestimonials = async(userName: string) => {
     try {
       const result = await getTestimonials(userName);

@@ -1,7 +1,10 @@
+"use client"
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Sidebar from "@/components/Sidebar";
 import { Toaster } from "@/components/ui/toaster"
+import { useSearchParams } from 'next/navigation';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,13 +14,15 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default function DashboardLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  children, params
+}: {
+  children: React.ReactNode,
+  params: { userId: string } 
+}) {
+
   return (
-        <div className = "flex h-screen bg-[#1D232A]">
-            <div className="w-1/5 h-full"><Sidebar /></div>
+        <div className = "flex h-full min-h-screen bg-[#1D232A]">
+            <div className="w-1/5 h-full"><Sidebar userId={params.userId as string}/></div>
             <div className="w-full h-full">{children}</div> 
         </div> 
   );

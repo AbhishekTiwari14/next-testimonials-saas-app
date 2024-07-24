@@ -20,6 +20,7 @@ import axios, { AxiosError } from "axios"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from 'next/navigation'
 import { Loader2 } from 'lucide-react';
+import Link from 'next/link'
 
 
 
@@ -48,8 +49,8 @@ const SigninPage = () => {
                 title: 'Success',
                 description: response.data.message,
               });
-              router.replace(`/me`);
               setIsSubmitting(false);
+              router.replace('/dashboard');
             }
             else{
               toast({
@@ -119,6 +120,7 @@ const SigninPage = () => {
               ) : (
                 'Sign In'
               )}</Button>
+              <p className='text-gray-400 text-sm'>Don&apos;t have an account? <Link href='/signup' className='text-blue-500 hover:underline'>Sign Up</Link></p>
       </form>
     </Form>
     </div>

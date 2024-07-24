@@ -1,7 +1,8 @@
 import UserModel from "@/app/models/User";
 import connectDb from "@/lib/connectDb";
 import bcryptjs from "bcryptjs"
-
+import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken"
 
 connectDb();
 
@@ -31,8 +32,21 @@ export async function POST(request: Request){
     })
     await newUser.save();
 
-    return Response.json({
-        success: true,
-        message: "user created successfully" 
-    }, {status: 200})
+    const tokenData = {
+        id: newUser._id,
+        email: newUser.email
+    };
+
+    const token = jwt.sign(tokenData, process.env.TOKEN_SECRET!, {expiresIn: '1d'});
+
+    const response = NextResponse.json({
+        message: "user created successfully",
+        success: true
+    })
+
+    response.cookies.set("token", token, {
+        httpOnly: true   //will make sure that user cannot modify token
+    })
+
+    return response; 
 }
