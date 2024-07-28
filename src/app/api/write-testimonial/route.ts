@@ -42,7 +42,6 @@ export async function POST(request: Request){
         //     username: searchParams.get('username'),
         // };
         const {username, name, image, message} = await request.json();
-        console.log(username);
         const user = await UserModel.findOne({ username });
         if (!user) {
             return Response.json(

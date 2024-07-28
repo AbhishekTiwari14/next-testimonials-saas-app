@@ -18,12 +18,12 @@ export default function DashboardPage() {
     const authorizeUser = async() => {
       try {
         const response = await axios.post('/api/auth/me');
-        console.log("User Authorized", response.data.data);
         setUsername(response.data.data.username);
         setCookieUserId(response.data.data._id.toString()); 
       } catch (err: any) {
-
-        console.log("user unauthorized", err);
+        return Response.json({
+          error: err.message
+        })
       }
     }
     authorizeUser();
@@ -34,7 +34,6 @@ export default function DashboardPage() {
     try {
       const result = await getTestimonials(userName);
       if(result.data){ 
-        console.log(result.data?.testimonials);
         setTestimonials(result.data?.testimonials);
       }
       if (!result.success) {

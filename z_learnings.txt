@@ -12,3 +12,10 @@
 FRONTEND 
 
 (1) Create signup & signin page
+
+...........................................
+
+Optimizations:
+(1) Largest Contenful Paint(LCP) [Loading]: (<2.5: green, <4: yellow): FCP(HTML/CSS/JS) + Images/videos load
+(2) First Input Delay(FID) [Interactivity]: (<0.1: green, <0.3: yellow): 
+(3) Cumulative Layout Shift(CLS) [Visual Stability]: (<0.1: green, <0.25: yellow)

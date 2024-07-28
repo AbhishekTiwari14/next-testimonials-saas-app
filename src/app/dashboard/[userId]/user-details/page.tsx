@@ -43,11 +43,12 @@ export default function UserDetailsPage() {
             try {
                 const response = await axios.post('/api/auth/me');
                 if(response.data){
-                    console.log(response.data.data);
                     setUser(response.data.data);
                 }
             } catch (error: any) {
-                console.log(error.message);
+                return Response.json({
+                  error: error.message
+                })
             }
         }
         fetchUser();
@@ -94,6 +95,10 @@ export default function UserDetailsPage() {
             <div className="flex items-center">
               <span className="w-24 font-medium text-gray-300">Testimonial Page URL:</span>
               <span className="ml-2 text-white hover:cursor-pointer hover:text-blue-400">http://localhost:3000/write-testimonial?username={user.username}</span>
+            </div>
+            <div className="flex items-center">
+              <span className="w-24 font-medium text-gray-300">Testimonials API Endpoint:</span>
+              <span className="ml-2 text-white hover:cursor-pointer hover:text-blue-400">http://localhost:3000/api/testimonials/{user.username}</span>
             </div>
             <div className="flex items-center">
               <span className="w-24 font-medium text-gray-300">Testimonials Received:</span>

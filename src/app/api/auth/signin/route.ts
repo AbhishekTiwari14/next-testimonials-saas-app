@@ -10,7 +10,6 @@ export async function POST(request: Request){
     const {email, password} = await request.json();
     const user = await UserModel.findOne({email});
     if(!user){
-        console.log("Email Id is not registered");
         return Response.json({
             success: false,
             message: "Email Id is not registered"
@@ -19,7 +18,6 @@ export async function POST(request: Request){
     
     const correctPassword = await bcryptjs.compare(password, user.password);
     if(!correctPassword){
-        console.log("Incorect Password!!");
         return Response.json({
             success: false,
             message: "Incorect Password!!"

@@ -40,7 +40,6 @@ export default function DisplayTestimonialsGuidePage() {
         try {
           const result = await getTestimonials(userName);
           if(result.data){ 
-            console.log(result.data?.testimonials);
             setTestimonials(result.data?.testimonials);
           }
           if (!result.success) {
@@ -129,17 +128,55 @@ const config = {
 }`}  />
           </CardContent>
         </Card>
+        <Card className='bg-[#2A323C] border-y-0 rounded-none'>
+          <CardHeader className='space-y-0 pb-0'>
+            <CardTitle className='text-white text-md font-medium'>Add image configuration in next.config.js</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2">
+          <CodeSnippet language='jsx' code= {`
+const nextConfig = {
+    images: {
+      domains: ['utfs.io'], // Add the hostname of your image provider (utfs.io in this case)
+    },
+};
+  `}  />
+          </CardContent>
+        </Card>
         <Card className='bg-[#2A323C] border-t-0 rounded-t-none'>
           <CardHeader className='space-y-0 pb-0'>
             <CardTitle className='text-white text-md font-medium'>Add Testimonials section in your Homepage</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
           <CodeSnippet language='jsx' code= {`
-<>
+          'use client'
+
+import axios from "axios";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+interface Testimonial{
+  _id: string | object;
+  name: string;
+  message: string;
+  image: string; 
+  createdAt: Date
+}
+
+export default function Home() {
+  const [testimonials, setTestimonials] = useState([]);
+  useEffect(()=>{
+    const getTestimonials = async() => {
+      const response = await axios.get('http://localhost:3000/api/testimonials?username=one');
+      setTestimonials(response.data.data);
+    }
+    getTestimonials();
+  }, [])
+  return (
+      <section className="w-11/12 mx-auto p-6">
           <p className='text-4xl font-bold text-white text-center my-6'>Testimonials</p>
           <div className="flex overflow-hidden space-x-16 h-auto group">
         <div className="flex space-x-16 animate-loop-scroll bg-[#1D232A] py-2 group-hover:paused">
-        //assuming that you have stored api response data array in testimonials state
           {testimonials && testimonials.map((testimonial: Testimonial)=> (
             <div key ={String(testimonial._id)} className= "rounded-lg shadow-md p-4 bg-[#2A323C] min-w-[400px]">
             <div className="text-center">   
@@ -176,7 +213,9 @@ const config = {
           ))}
         </div>
       </div>
-        </>`}  />
+        </section>
+  )
+`}  />
           </CardContent>
         </Card>
       </TabsContent>

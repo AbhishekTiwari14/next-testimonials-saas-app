@@ -1,7 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/api/(.*)",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "http://localhost:3001" }, // Replace with your actual allowed origin
+          { key: "Access-Control-Allow-Methods", value: "GET, POST, PUT, DELETE, OPTIONS" },
+          { key: "Access-Control-Allow-Headers", value: "Content-Type, Authorization"   
+ },
+        ],
+      },
+    ];
+  },
   images: {
-    domains: ['utfs.io'], // Add the hostname of your image provider (utfs.io in this case)
+    domains: ['utfs.io'], 
   },
 };
 

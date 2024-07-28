@@ -13,11 +13,11 @@ export default function DashboardPage() {
         const redirectUser = async() => {
           try {
             const response = await axios.post('/api/auth/me');
-            console.log("iid", response.data.data._id);
-            // console.log(`/dashboard/${userId}`);
             router.replace(`/dashboard/${response.data.data._id}/selected-testimonials`);
           } catch (err: any) {
-            console.log("user unauthorized", err);
+            Response.json({
+              error: err.message
+            })
           }
         }
         redirectUser();

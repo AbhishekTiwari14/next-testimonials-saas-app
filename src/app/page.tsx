@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator"
 import { Spotlight } from "@/components/ui/Spotlight";
 import Documentation from "@/components/Documentation";
+import { Suspense } from 'react';
 
 
 export default function Home() {
@@ -31,7 +32,7 @@ export default function Home() {
         </div>
       </header>
       <Separator/>
-      <main className="w-full h-4/5">
+      <main className="w-full h-4/5 mt-2">
         <div className="h-screen max-h-fit w-full rounded-md flex md:items-center md:justify-center bg-[#FAFAFA] antialiased bg-grid-white/[0.02] relative overflow-hidden">
       <Spotlight
         className="-top-40 left-0 md:left-60 md:-top-20"
@@ -424,9 +425,11 @@ export default function Home() {
       </div>
       </section>
       <Separator />
+      <Suspense fallback="Loading...">
       <section id="docs">
         <Documentation />
       </section>
+      </Suspense>
       <Separator />
       <section className="mb-48" id="faqs">
         <div>

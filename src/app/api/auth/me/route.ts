@@ -9,8 +9,7 @@ export async function POST(request: NextRequest){
 
     const userId = await getdatafromjwt(request);
 
-    const user = await UserModel.findOne({_id: userId}).select("-password"); //password ko chorr kar baki data de do
-    console.log("route me user", user);
+    const user = await UserModel.findOne({_id: userId}).select("-password"); 
     if(!user){
         throw new Error("User not found");
     }

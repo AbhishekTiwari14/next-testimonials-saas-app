@@ -63,11 +63,11 @@ export default function CollectTestimonialsGuidePage() {
           </CardHeader>
           <CardContent className="space-y-2">
           <CodeSnippet language='jsx' code= {
-            `<a href='http://localhost:3000/write-testimonial?username=one' >  // enter your username here
+            `<Link href='http://localhost:3000/write-testimonial?username=one' target='_blank'>  // enter your username here
               <button className = "inline-flex items-center justify-center whitespace-nowrap rounded-md text-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-blue-600 text-white hover:bg-red-600 h-10 px-4 py-2"> 
                 Write Testimonial 
               </button>
-            </a>`}  />
+            </Link>`}  />
           </CardContent>
         </Card>
       </TabsContent>
