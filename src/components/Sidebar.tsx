@@ -13,7 +13,6 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
-  import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { usePathname } from 'next/navigation'
 import axios from 'axios'
@@ -52,7 +51,7 @@ export default function Sidebar({userId} : sidebarProp) {
                 <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
             </svg>
         </div>
-        <Link href = {`http://localhost:3000/dashboard/${userId}/user-details`}>
+        <Link href = {`${process.env.APP_URL}/dashboard/${userId}/user-details`}>
             <p className={pathname.includes('/user-details') ? 'text-white bg-gray-700 rounded-lg px-2 py-1' : 'text-gray-300 hover:text-white'}>User Details</p> 
         </Link>
 
@@ -83,7 +82,7 @@ export default function Sidebar({userId} : sidebarProp) {
                 <path fillRule="evenodd" d="M6.912 3a3 3 0 0 0-2.868 2.118l-2.411 7.838a3 3 0 0 0-.133.882V18a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-4.162c0-.299-.045-.596-.133-.882l-2.412-7.838A3 3 0 0 0 17.088 3H6.912Zm13.823 9.75-2.213-7.191A1.5 1.5 0 0 0 17.088 4.5H6.912a1.5 1.5 0 0 0-1.434 1.059L3.265 12.75H6.11a3 3 0 0 1 2.684 1.658l.256.513a1.5 1.5 0 0 0 1.342.829h3.218a1.5 1.5 0 0 0 1.342-.83l.256-.512a3 3 0 0 1 2.684-1.658h2.844Z" clipRule="evenodd" />
             </svg>
         </div>
-        <Link href={`http://localhost:3000/dashboard/${userId}/selected-testimonials`}>
+        <Link href={`${process.env.APP_URL}/dashboard/${userId}/selected-testimonials`}>
             <p className={pathname.includes('/selected-testimonials') ? 'text-white bg-gray-700 rounded-lg px-2 py-1' : 'text-gray-300 hover:text-white'}>Selected</p>
         </Link>
         <Link href="/">
@@ -99,10 +98,10 @@ export default function Sidebar({userId} : sidebarProp) {
                 <path d="M14.25 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 16.5 7.5h-1.875a.375.375 0 0 1-.375-.375V5.25Z" />
             </svg>
         </div>
-        <Link href={`http://localhost:3000/dashboard/${userId}/guide/collect-testimonials`}>
+        <Link href={`${process.env.APP_URL}/dashboard/${userId}/guide/collect-testimonials`}>
             <p className={pathname.includes('/collect-testimonials') ? 'text-white bg-gray-700 rounded-lg px-2 py-1' : 'text-gray-300 hover:text-white'}>Collect Testimonials</p>
         </Link>
-        <Link href={`http://localhost:3000/dashboard/${userId}/guide/display-testimonials`}>
+        <Link href={`${process.env.APP_URL}/dashboard/${userId}/guide/display-testimonials`}>
             <p className= {pathname.includes('/display-testimonials') ? 'text-white bg-gray-700 rounded-lg px-2 py-1' : 'text-gray-300 hover:text-white'}>Display Testimonials</p>
         </Link>
       </aside>
