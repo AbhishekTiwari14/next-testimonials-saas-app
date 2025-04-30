@@ -3,25 +3,12 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
-import Link from "next/link"
 
 export default function UserDetailsPage() {
   interface userDetails {
@@ -99,7 +86,7 @@ export default function UserDetailsPage() {
                 Testimonial Page URL:
               </span>
               <span className="ml-2 text-white hover:cursor-pointer hover:text-blue-400">
-                ${process.env.APP_URL}/write-testimonial?username=
+                ${process.env.NEXT_PUBLIC_APP_URL}/write-testimonial?username=
                 {user.username}
               </span>
             </div>
@@ -112,7 +99,7 @@ export default function UserDetailsPage() {
               </span> */}
               <span>
                 <pre>
-                  &lt;script&gt; src=&quot;${process.env.APP_URL}
+                  &lt;script&gt; src=&quot;${process.env.NEXT_PUBLIC_APP_URL}
                   /api/testimonials-widget&quot; username={user.username}&gt;
                 </pre>
               </span>

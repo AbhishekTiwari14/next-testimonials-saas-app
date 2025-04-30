@@ -108,7 +108,7 @@ export default function DisplayTestimonialsGuidePage() {
               {username && (
                 <CodeSnippet
                   language="jsx"
-                  code={`<script src="${process.env.APP_URL}/api/testimonials-widget" username="${username} "></script>`}
+                  code={`<script src="${process.env.NEXT_PUBLIC_APP_URL}/api/testimonials-widget" username="${username} "></script>`}
                 />
               )}
             </CardContent>

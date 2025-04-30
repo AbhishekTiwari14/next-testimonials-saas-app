@@ -1,6 +1,6 @@
 ;(function () {
   const config = {
-    apiUrl: `${process.env.APP_URL}/api/testimonials?username=one`,
+    apiUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/testimonials?username=one`,
     carouselSelector: "[data-testimonials-carousel]",
     username: "one",
   }

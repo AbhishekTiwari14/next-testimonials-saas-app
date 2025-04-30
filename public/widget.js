@@ -49,7 +49,7 @@
 
     button.onclick = function () {
       window.open(
-        `${process.env.APP_URL}/write-testimonial?username=${config.username}`,
+        `${process.env.NEXT_PUBLIC_APP_URL}/write-testimonial?username=${config.username}`,
         "_blank"
       )
     }

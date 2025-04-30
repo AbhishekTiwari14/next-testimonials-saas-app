@@ -77,7 +77,7 @@ export default function CollectTestimonialsGuidePage() {
               {username && (
                 <CodeSnippet
                   language="jsx"
-                  code={`<script src="${process.env.APP_URL}/api/widget" username="${username}" text="Leave a feedback" color="blue" hover="red"></script>`}
+                  code={`<script src="${process.env.NEXT_PUBLIC_APP_URL}/api/widget" username="${username}" text="Leave a feedback" color="blue" hover="red"></script>`}
                 />
               )}
             </CardContent>
@@ -88,7 +88,7 @@ export default function CollectTestimonialsGuidePage() {
             <CardContent className="text-center pt-2">
               {username && (
                 <Link
-                  href={`${process.env.APP_URL}/write-testimonial?username=${username}`}
+                  href={`${process.env.NEXT_PUBLIC_APP_URL}/write-testimonial?username=${username}`}
                   target="_blank"
                 >
                   <button
